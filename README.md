@@ -53,7 +53,7 @@ so date steps doesnt exceed their maximum values
 its used as an event callback for when Button_4 is pressed
 
 ## Releases
-### [v1.0](https://github.com/eliasna1040/IoTHouse/tree/v1.0)
+### [v1.0](https://github.com/eliasna1040/IoTHouse/releases/tag/v1.0)
 
 ## Changelog
 ### [v1.0](https://github.com/eliasna1040/IoTHouse/tree/v1.0) Features:
