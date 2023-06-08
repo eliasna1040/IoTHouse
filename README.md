@@ -9,6 +9,8 @@
 
 [Releases](#releases)
 
+[Changelog](#changelog)
+
 [To-Do](#to-do)
 
 ## About the project
@@ -16,13 +18,11 @@ IoTHouse is a project to control a temperature/humidity module
 and a real time clock module through an arduino zero controller and visualize it on a display
 
 ## Requirements
-<ul>
-  <li>Arduino Zero</li>
-  <li>SSD1306 Display</li>
-  <li>RTC_DS3231 Module</li>
-  <li>DHT11 Module</li>
-  <li>4 Buttons</li>
- </ul>
+* Arduino Zero</li>
+* SSD1306 Display</li>
+* RTC_DS3231 Module</li>
+* DHT11 Module</li>
+* 4 Buttons</li>
 
 ## Instructions
 Menu:
@@ -53,12 +53,30 @@ so date steps doesnt exceed their maximum values
 its used as an event callback for when Button_4 is pressed
 
 ## Releases
+### [v1.0](https://github.com/eliasna1040/IoTHouse/tree/v1.0)
+
+## Changelog
+### [v1.0](https://github.com/eliasna1040/IoTHouse/tree/v1.0) Features:
+* Adjustable date and time
+
+### [v0.4](https://github.com/eliasna1040/IoTHouse/tree/v0.4) Features:
+* Added date to display
+* Added time to display
+
+### [v0.3](https://github.com/eliasna1040/IoTHouse/tree/v0.3) Features:
+* Added temperature to display
+* Added humidity to display
+
+### [v0.2](https://github.com/eliasna1040/IoTHouse/tree/v0.2) Features:
+* Menu displayed in OLED Display
+* Selectable options
+
+### [v0.1](https://github.com/eliasna1040/IoTHouse/tree/v0.1) Features:
+* Menu displayed in Serial console
 
 ## To-Do
-<ul>
-  <li>Use millis() instead of delay() so the loop doesnt wait</li>
-  <li>Add a return option to adjust datetime</li>
-  <li>Use a Rotary Encoder for adjusting datetime instead of buttons</li>
-  <li>Separate code into more files for readability</li>
- </ul>
+* Use millis() instead of delay() so the loop doesnt wait
+* Add a return option to adjust datetime
+* Use a Rotary Encoder for adjusting datetime instead of buttons
+* Separate code into more files for readability
 
