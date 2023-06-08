@@ -4,6 +4,7 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 #include "DHT.h"
+#include "RTClib.h"
 
 #define SCREEN_WIDTH 128 // OLED display width, in pixels
 #define SCREEN_HEIGHT 64 // OLED display height, in pixels
@@ -21,15 +22,17 @@ int menuCount = 1;
 bool selected = false;
 char *menu[] { "Weather", "Time" };
 
-DHT dht(DHTPIN, DHTTYPE);
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 EasyButton button_1(BUTTON_1_PIN, debounce);
 EasyButton button_2(BUTTON_2_PIN, debounce);
+DHT dht(DHTPIN, DHTTYPE);
+RTC_DS3231 rtc;
 
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
   dht.begin();
+  rtc.begin();
 
   button_1.begin();
   button_1.enableInterrupt(buttonISR_1);
@@ -56,7 +59,7 @@ void loop() {
     printWeather();
     break;
    case 2:
-    time();
+    printDateTime();
     break;
    default:
     printMenu();
@@ -108,9 +111,26 @@ void printWeather(){
   display.println(F("C"));
 }
 
-void time(){
-  display.print("time = ");
-  display.println(menuInput);
+String insertChar(int val){
+  if(val < 10){
+    return String('0') + String(val);
+  }
+  return String(val);
+}
+
+void printDateTime(){
+  DateTime now = rtc.now();
+  display.print(insertChar(now.day()));
+  display.print('/');
+  display.print(insertChar(now.month()));
+  display.print('/');
+  display.println(insertChar(now.year()));
+
+  display.print(insertChar(now.hour()));
+  display.print(':');
+  display.print(insertChar(now.minute()));
+  display.print(':');
+  display.print(insertChar(now.second()));
 }
 
 void buttonISR_1(){
