@@ -3,6 +3,7 @@
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
+#include "DHT.h"
 
 #define SCREEN_WIDTH 128 // OLED display width, in pixels
 #define SCREEN_HEIGHT 64 // OLED display height, in pixels
@@ -11,7 +12,8 @@
 #define BUTTON_1_PIN 5
 #define BUTTON_2_PIN 6
 
-Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
+#define DHTTYPE DHT11
+#define DHTPIN 3
 
 int debounce = 50;
 int menuInput = 0;
@@ -19,12 +21,15 @@ int menuCount = 1;
 bool selected = false;
 char *menu[] { "Weather", "Time" };
 
+DHT dht(DHTPIN, DHTTYPE);
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 EasyButton button_1(BUTTON_1_PIN, debounce);
 EasyButton button_2(BUTTON_2_PIN, debounce);
 
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
+  dht.begin();
 
   button_1.begin();
   button_1.enableInterrupt(buttonISR_1);
@@ -48,7 +53,7 @@ void loop() {
 	display.setCursor(0,0);
   switch (menuInput) {
    case 1:
-    temperature();
+    printWeather();
     break;
    case 2:
     time();
@@ -77,9 +82,30 @@ void printMenu(){
   }
 }
 
-void temperature(){
-  display.print("temp = ");
-  display.println(menuInput);
+void drawDegree(){
+  display.drawCircle(display.getCursorX()-4, display.getCursorY()+2, 2, WHITE);
+}
+
+void printWeather(){
+  // Sensor readings may also be up to 2 seconds 'old' (its a very slow sensor)
+  float humidity = dht.readHumidity();
+  // Read temperature as Celsius (the default)
+  float temperature = dht.readTemperature();
+
+  // Check if any reads failed and exit early (to try again).
+  if (isnan(humidity) || isnan(temperature)) {
+    Serial.println(F("Failed to read from DHT sensor!"));
+    return;
+  }
+
+  display.print(F("Humidity: "));
+  display.print(humidity);
+  display.println('%');
+  display.print(F("Temperature: "));
+  display.print(temperature);
+  display.print("  ");
+  drawDegree();
+  display.println(F("C"));
 }
 
 void time(){
