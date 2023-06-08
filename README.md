@@ -2,8 +2,11 @@
 
 ## Table of Contents
 [About the project](#about-the-project)
+
 [Requirements](#requirements)
+
 [Instructions](#instructions)
+
 [Releases](#releases)
 
 ## About the project
