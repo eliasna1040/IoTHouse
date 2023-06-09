@@ -5,6 +5,8 @@
 
 [Requirements](#requirements)
 
+[Libraries](#libraries)
+
 [Instructions](#instructions)
 
 [Releases](#releases)
@@ -18,11 +20,20 @@ IoTHouse is a project to control a temperature/humidity module
 and a real time clock module through an arduino zero controller and visualize it on a display
 
 ## Requirements
-* Arduino Zero</li>
-* SSD1306 Display</li>
-* RTC_DS3231 Module</li>
-* DHT11 Module</li>
-* 4 Buttons</li>
+* Arduino Zero
+* SSD1306 Display
+* RTC_DS3231 Module
+* DHT11 Module
+* 4 Buttons
+
+## Libraries
+* EasyButton
+* SPI
+* Wire
+* Adafruit GFX
+* Adafruit SSD1306
+* DHT
+* RTClib
 
 ## Instructions
 Menu:
