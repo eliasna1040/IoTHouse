@@ -15,6 +15,8 @@
 
 [To-Do](#to-do)
 
+[Contributing](#contributing)
+
 ## About the project
 IoTHouse is a project to control a temperature/humidity module 
 and a real time clock module through an arduino zero controller and visualize it on a display
@@ -93,4 +95,7 @@ its used as an event callback for when Button_4 is pressed
 * Add a return option to adjust datetime
 * Use a Rotary Encoder for adjusting datetime instead of buttons
 * Separate code into more files for readability
+
+## Contributing
+Got some help to the display menu from Kevin
 
