@@ -19,6 +19,9 @@
 IoTHouse is a project to control a temperature/humidity module 
 and a real time clock module through an arduino zero controller and visualize it on a display
 
+<!-- ![20230608_153407](https://github.com/eliasna1040/IoTHouse/assets/115976729/fa7bf955-16dc-4da8-a2c7-338dddf1f15e) -->
+<img src="https://github.com/eliasna1040/IoTHouse/assets/115976729/fa7bf955-16dc-4da8-a2c7-338dddf1f15e"  width="60%" height="30%">
+
 ## Requirements
 * Arduino Zero
 * SSD1306 Display
